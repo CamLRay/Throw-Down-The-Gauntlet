@@ -9,6 +9,8 @@
 * 10:05: Begin writing user stories.
 * 11:45: Beging drawing initial component diagram.
 * 2:00: Begin writing proposal
+* 3:00: Research Middleware
+* 3:20: Test out firebase
 
 #### User Stories MVP
 * A user should be able to create a new tournament as a Tournament Organizer.
