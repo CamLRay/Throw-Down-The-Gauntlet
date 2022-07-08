@@ -9,7 +9,7 @@
 * 10:05: Begin writing user stories.
 
 #### User Stories MVP
-* A user should be able to create a new tournament.
+* A user should be able to create a new tournament as a Tournament Organizer.
 * A user should be able to select a tournament style.
 * A user should be able to input tournament participants via CSV or manually.
 * A user should be able to track scores throughout the tournament.
@@ -17,3 +17,8 @@
 * For KOTH and Warlord Style, a user should be able to press a button to increment users wincount.
 
 #### User Stories Stretch
+* A user should have a profile with fight histoy, rating and statistics.
+* A user should be able to sign up for a tournament via a sign up link.
+* A Tournament organizer should be able to search users to add to the tournament by an identifier.
+* A user should bable to challenge another user to a ranked fight and submit the record.
+* A user should be able to set timed tournaments KOTH Warlord style.
