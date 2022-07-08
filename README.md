@@ -5,3 +5,5 @@
 * 8:55: try out Material-UI and read googles design guidelines
 * 9:30: Implemented Material UI on a past project.
 * 9:40: Research rating systems, Elo TrueSkill.
+* 9:47: Dig deeper into TrueSkill npm package. (TrueSkill allows non-commercial projects SWEET!)
+* 10:05: Begin writing user stories.
