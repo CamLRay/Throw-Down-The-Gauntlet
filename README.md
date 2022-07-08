@@ -8,6 +8,7 @@
 * 9:47: Dig deeper into TrueSkill npm package. (TrueSkill allows non-commercial projects SWEET!)
 * 10:05: Begin writing user stories.
 * 11:45: Beging drawing initial component diagram.
+* 
 
 #### User Stories MVP
 * A user should be able to create a new tournament as a Tournament Organizer.
