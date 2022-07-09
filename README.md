@@ -12,6 +12,7 @@
 * 3:00: Research Middleware
 * 3:20: Test out firebase
 * 4:00: Planning Data structure
+* 4:30: query requirements
 
 #### User Stories MVP
 * A user should be able to create a new tournament as a Tournament Organizer.
