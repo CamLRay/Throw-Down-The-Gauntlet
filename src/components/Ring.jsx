@@ -12,14 +12,13 @@ const Ring = (props) =>{
       setKing({name: player.name, streak: 1})
     } else {
       setKing({name: player.name, streak: tempStreak + 1})
-      
     }
   };
   
     return(
       <>
       <h1>Ring #{props.ringNum}</h1>
-      <h2>Current King: {king.name}</h2>
+      <h2>King: {king.name} {}</h2>
       <h2>Streak: {king.streak}</h2>
       {players.map((player)=>{
         return <Player handleWin={handleStreak} player={player} />

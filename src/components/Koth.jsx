@@ -20,7 +20,8 @@ const Koth = (props) =>{
 
   return (
     <>
-      <input type='number' max='10' onChange={(e)=> setRingCount(e.target.value)}/>
+      <p>Number of Rings</p>
+      <input type='number' max='10' placeholder="How many rings?" onChange={(e)=> setRingCount(e.target.value)}/>
       {ringList.map((ring)=>{
         return <Ring players={players} ringNum={ring}/>
       })}
