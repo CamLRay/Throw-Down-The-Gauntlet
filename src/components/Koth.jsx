@@ -1,7 +1,9 @@
 const Koth = () =>{
 
   return (
-    <><h1>koth</h1></>
+    <>
+      <h1>koth</h1>
+    </>
   );
 }
 
