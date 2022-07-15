@@ -14,6 +14,11 @@
 * 4:00: Planning Data structure
 * 4:30: query requirements
 
+
+#### Friday, 07/15
+* 8:00: Research similar apps to find ideas I like and don't like.
+* 8:43: Research bracket calculation algorithms. 
+
 #### User Stories MVP
 * A user should be able to create a new tournament as a Tournament Organizer.
 * A user should be able to select a tournament style.
