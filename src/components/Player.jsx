@@ -1,5 +1,5 @@
 const Player = (props) =>{
-  const {thisPlayer, handleWin} = props;
+  const {player, handleWin} = props;
   return(
     <>
       <button onClick={()=>handleWin(player)}>{player.name}</button>

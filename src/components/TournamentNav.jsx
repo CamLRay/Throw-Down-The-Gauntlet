@@ -2,7 +2,6 @@ const TournamentNav = () =>{
   return (
     <>
       <nav>
-        <button></button>
       </nav>
     </>
   );
