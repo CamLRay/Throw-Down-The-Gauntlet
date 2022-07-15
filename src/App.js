@@ -1,14 +1,16 @@
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
-import Koth from './components/Koth';
+import Home from './components/Home';
+import TournamentControl from './components/TournamentControl';
 
 function App() {
   return (
   <>
+  <h1>Throw down the Gauntlet</h1>
   <Routes>
-    <Route path='/koth' element={<Koth />} />
+    <Route path='/' element={<Home />} />
+    <Route path='/tournaments' element={<TournamentControl />} />
   </Routes>
-    <h1>Throw down the Gauntlet</h1>
   </>
   );
 }
