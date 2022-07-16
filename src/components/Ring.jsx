@@ -4,12 +4,13 @@ import { useState } from "react";
 const Ring = (props) =>{
   const [king, setKing] = useState({});
   
-  const { players} = props;
+  const { players, onPlayerWin, onPlayerStreakEnd } = props;
   
   const handleStreak = (player) => {
     const tempStreak = king.streak;
     if(king.name !== player.name){
       setKing({name: player.name, streak: 1})
+      onPlayerStreakEnd();
     } else {
       setKing({name: player.name, streak: tempStreak + 1})
     }
@@ -21,7 +22,7 @@ const Ring = (props) =>{
       <h2>King: {king.name} {}</h2>
       <h2>Streak: {king.streak}</h2>
       {players.map((player)=>{
-        return <Player handleWin={handleStreak} player={player} />
+        return <Player key={player.id} handleWin={handleStreak} player={player} />
       })}
       </>
     )

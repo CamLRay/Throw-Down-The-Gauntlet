@@ -46,7 +46,13 @@ const TournamentControl = () =>{
   const handlePlayerWinsUpdate = (playerToUpdate) =>{
     const tempPlayers = players.filter((player)=> player.id !== playerToUpdate.id);
     let thisPlayer = players.filter((player)=> player.id === playerToUpdate.id);
-    setPlayers([...tempPlayers,{name: thisPlayer.name, persona: thisPlayer.persona, wins: thisPlayer.wins + playerToUpdate.streak, streaks: [...thisPlayer.streaks, playerToUpdate.streak] }])
+    setPlayers([...tempPlayers,{name: thisPlayer.name, persona: thisPlayer.persona, wins: thisPlayer.wins + playerToUpdate.streak, streaks: thisPlayer.streaks }])
+  }
+
+  const handlePlayerStreaksUpdate = (playerToUpdate) =>{
+    const tempPlayers = players.filter((player)=> player.id !== playerToUpdate.id);
+    let thisPlayer = players.filter((player)=> player.id === playerToUpdate.id);
+    setPlayers([...tempPlayers,{name: thisPlayer.name, persona: thisPlayer.persona, wins: thisPlayer.wins, streaks: [...thisPlayer.streaks, playerToUpdate.streak] }])
   }
   
   if(visibleComponent == null){
@@ -55,9 +61,14 @@ const TournamentControl = () =>{
 
   useEffect(()=>{
     if(tournamentDetails.style === 'koth'){
-      setVisibleComponent(<Koth players={players}/>)
+      setVisibleComponent(
+      <Koth 
+        players={players}
+        onPlayerWin={handlePlayerWinsUpdate}
+        onPlayerStreakEnd={handlePlayerStreaksUpdate}
+        />)
     }
-  },[tournamentDetails, players])
+  },[tournamentDetails, players,])
 
   return(
     <>
