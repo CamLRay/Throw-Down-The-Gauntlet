@@ -1,31 +1,41 @@
-import Player from "./Player";
-import { useState } from "react";
+import {React, useState} from 'react'
 
-const Ring = (props) =>{
-  const [king, setKing] = useState({});
-  
-  const { players, onPlayerWin, onPlayerStreakEnd } = props;
-  
-  const handleStreak = (player) => {
-    const tempStreak = king.streak;
-    if(king.name !== player.name){
-      setKing({name: player.name, streak: 1})
-      onPlayerStreakEnd();
-    } else {
-      setKing({name: player.name, streak: tempStreak + 1})
+
+
+function Ring(props) {
+  const {counters, onCounterClick} = props;
+  const [lastClicked, setlastClicked] = useState({});
+  const [streak, setStreak] = useState(0);
+  // const [state, dispatch] = useReducer({streak: 0, lastClicked: {}})
+
+  const handleClick = (clickedCounter) =>{
+    if(lastClicked.id !== clickedCounter.id){
+      if(Object.keys(lastClicked).length > 0){
+        onCounterClick({...clickedCounter, totalCount: clickedCounter.totalCount + 1},{...lastClicked, history:[...lastClicked.history, streak]})
+        setlastClicked({...clickedCounter, totalCount: clickedCounter.totalCount + 1})
+        
+        setStreak(1);
+      }else {
+      onCounterClick({...clickedCounter, totalCount: clickedCounter.totalCount + 1})
+      setlastClicked({...clickedCounter, totalCount: clickedCounter.totalCount + 1})
+      setStreak(1);
     }
-  };
-  
-    return(
-      <>
-      <h1>Ring #{props.ringNum}</h1>
-      <h2>King: {king.name} {}</h2>
-      <h2>Streak: {king.streak}</h2>
-      {players.map((player)=>{
-        return <Player key={player.id} handleWin={handleStreak} player={player} />
-      })}
-      </>
-    )
+    }else{
+      setlastClicked({...clickedCounter, totalCount: lastClicked.totalCount + 1})
+      setStreak(prevStreak => prevStreak + 1)
+      onCounterClick({...clickedCounter, totalCount: lastClicked.totalCount + 1})
+    }
+    
   }
-  
-  export default Ring;
+
+  return (
+    <>
+    <div>{lastClicked.name}-{streak}</div>
+      {counters.sort((a, b)=>(a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).map((counter)=>{
+        return <button key={counter.id} onClick={()=>handleClick(counter)}>{counter.name}</button>
+      })}
+    </>
+  )
+}
+
+export default Ring

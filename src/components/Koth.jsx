@@ -1,34 +1,40 @@
-import { useEffect, useState } from "react";
-import Ring from "./Ring";
-import { v4 } from "uuid";
+import React from 'react'
+import { useState } from 'react'
+import { v4 } from 'uuid'
+import Ring from './Ring'
+import ScoreBoard from './ScoreBoard'
 
-const Koth = (props) =>{
-  const [ringCount, setRingCount] = useState(null);
-  const [ringList, setRingList] = useState([]);
-  const { players, onPlayerWin, onPlayerStreakEnd } = props;
+function Koth() {
+const [counters, setCounters] = useState([
+      {name:'Britany', persona:'Satsuki', totalCount: 0, history:[], id: v4()},
+      {name:'Zofia', persona: 'Misaki', totalCount: 0, history:[], id: v4()},
+      {name:'Ayub', persona: 'Simone', totalCount: 0, history:[], id: v4()},
+      {name:'Cory', persona: 'Fai', totalCount: 0, history:[], id: v4()},
+      {name:'Cora', persona: 'Sion', totalCount: 0, history:[], id: v4()},
+      {name:'Jed', persona: 'Dagon', totalCount: 0, history:[], id: v4()},
+    ])
 
-  const handleRingCount = (count) => {
-    let ringArray=[];
-    for(let i=1; i<=count; i++){
-      ringArray.push(i);
-    }
-    setRingList(ringArray)
-  };
-
-  useEffect(()=>{
-    handleRingCount(ringCount)
-  },[ringCount])
+const handleTotalCount = (counterToUpdate, lastCounter) =>{
+  if(lastCounter){
+    const tempCounter = counters.filter((counter)=> counter.id !== counterToUpdate.id).filter((counter)=> counter.id !== lastCounter.id);
+    setCounters([...tempCounter, {...counterToUpdate}, {...lastCounter}])
+    console.log(counters)
+  }else {
+    const tempCounter = counters.filter((counter)=> counter.id !== counterToUpdate.id);
+    setCounters([...tempCounter, {...counterToUpdate}])
+  }
+  
+}
 
   return (
     <>
-      <p>Number of Rings</p>
-      <input type='number' max='10' placeholder="How many rings?" onChange={(e)=> setRingCount(e.target.value)}/>
-      {ringList.map((ring)=>{
-        return <Ring key={v4()} players={players} ringNum={ring} onPlayerWin={onPlayerWin} onPlayerStreakEnd={onPlayerStreakEnd}/>
-      })}
-      
+      {/* {counters.sort((a, b)=>(a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).map((counter)=>{
+        return <div key={counter.id}>name: {counter.name} - total: {counter.totalCount} - history:[{counter.history.map((streak)=>{return streak + ', '})}]</div>})}  */}
+      <ScoreBoard counters={counters}/>
+      <Ring counters={counters} onCounterClick={handleTotalCount}/>
+      <Ring counters={counters} onCounterClick={handleTotalCount}/>
     </>
-  );
+  )
 }
 
-export default Koth;
+export default Koth
