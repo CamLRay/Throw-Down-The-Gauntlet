@@ -12,7 +12,7 @@ function Timer() {
     setIsActive(!isActive);
   }
 
-  const editingToggle = (bool) => {
+  const handleEditing = (bool) => {
     setEditing(bool);
     setIsActive(false);
   }
@@ -64,7 +64,7 @@ function Timer() {
   return (
     <div className="app">
     <div style={clockStyle}>
-      {editing ? <><input type='number' placeholder='Enter minutes...' autoFocus onChange={(e)=>handleTime(e.target.value)} /><button onClick={()=>editingToggle(false)}>Set</button></> : <div onClick={()=>editingToggle(true)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}</div>} 
+      {editing ? <><input type='number' placeholder='Enter minutes...' autoFocus onChange={(e)=>handleTime(e.target.value)} /><button onClick={()=>handleEditing(false)}>Set</button></> : <div onClick={()=>handleEditing(true)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}</div>} 
     </div>
     <div className="row">
       <button onClick={toggle}>
