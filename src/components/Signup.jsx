@@ -1,6 +1,7 @@
 import { React, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -9,6 +10,7 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const { createUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,9 +18,10 @@ function Signup() {
 
     try {
       if(password !== confirmPassword){
-        setError('Passwords do not match')
+        setError('Passwords do not match');
       } else {
         await createUser(username, email, password);
+        navigate('/dashboard');
       }
     } catch (e) {
       console.log(e.message);

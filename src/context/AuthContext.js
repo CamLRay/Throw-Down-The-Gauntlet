@@ -15,16 +15,10 @@ export const AuthContextProvider = ({children}) => {
 
   const createUser = (username, email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
-     
+      .then(userCredential => {
+        updateProfile(userCredential.user, {displayName: username})
+      })
     
-    
-    // updateProfile(auth.currentUser, {
-    //   displayName: username
-    // }).then(() => {
-
-    // }).catch((error) => {
-
-    // });
   };
 
   const signIn = (email, password) => {
