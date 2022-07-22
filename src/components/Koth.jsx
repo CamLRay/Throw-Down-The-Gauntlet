@@ -26,11 +26,14 @@ const handleTotalCount = (counterToUpdate, lastCounter) =>{
   
 }
 
+
+
   return (
     <>
-      {/* {counters.sort((a, b)=>(a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).map((counter)=>{
-        return <div key={counter.id}>name: {counter.name} - total: {counter.totalCount} - history:[{counter.history.map((streak)=>{return streak + ', '})}]</div>})}  */}
+      <Timer />
       <ScoreBoard counters={counters}/>
+      <button>Add Ring</button>
+      <button>Remove Ring</button>
       <Ring counters={counters} onCounterClick={handleTotalCount}/>
       <Ring counters={counters} onCounterClick={handleTotalCount}/>
     </>
