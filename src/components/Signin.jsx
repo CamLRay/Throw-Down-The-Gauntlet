@@ -20,9 +20,10 @@ function Signin() {
 
   return (
     <>
+      <p>{error}</p>
       <form onSubmit={handleSubmit}>
-        <input type='text' placeholder='Username or email'/>
-        <input type='password' placeholder='Password'/>
+        <input type='text' placeholder='Username or email' onChange={(e)=>setEmail(e.target.value)} />
+        <input type='password' placeholder='Password' onChange={(e)=>setPassword(e.target.value)} />
         <button>Log in</button>
         <p>Don't have an account?</p><Link to='/signup'>Sign Up</Link>
       </form>
