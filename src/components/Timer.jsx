@@ -53,27 +53,61 @@ function Timer() {
     fontSize: '6rem'
   }
 
-
-  const handleTime = (time) =>{
-    setSeconds(time*60)
-    timeRef.current = time*60;
+  const digitStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    width: 'fit-content'
   }
 
-  
+
+  // const handleTime = (time) =>{
+  //   setSeconds(time*60)
+  //   timeRef.current = time*60;
+  // }
+
+  const handleTime = (digit) => {
+    switch(digit){
+      case 'INCREMENT_SECONDS':
+        return setSeconds(seconds => seconds+1);
+      case 'DECREMENT_SECONDS':
+        return setSeconds(seconds => seconds-1);
+      case 'INCREMENT_TENSECONDS':
+        return setSeconds(seconds => seconds+10);
+      case 'DECREMENT_TENSECONDS':
+        return setSeconds(seconds => seconds-10);
+      case 'INCREMENT_MINUTES':
+        return setSeconds(seconds => seconds+60);
+      case 'DECREMENT_MINUTES':
+        return setSeconds(seconds => seconds-60);
+      case 'INCREMENT_TENMINUTES':
+        return setSeconds(seconds => seconds+600);
+      case 'DECREMENT_TENMINUTES':
+        return setSeconds(seconds => seconds-600);
+      default:
+        return;
+    }
+  }
+
+  // <><input type='number' placeholder='Enter minutes...' autoFocus onChange={(e)=>handleTime(e.target.value)} /><button onClick={()=>handleEditing(false)}>Set</button></> : <div onClick={()=>handleEditing(true)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}</div>}
   
   return (
     <div className="app">
     <div style={clockStyle}>
-      {editing ? <><input type='number' placeholder='Enter minutes...' autoFocus onChange={(e)=>handleTime(e.target.value)} /><button onClick={()=>handleEditing(false)}>Set</button></> : <div onClick={()=>handleEditing(true)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}</div>} 
+      {editing ? <><button onClick={()=>handleTime("INCREMENT_TENMINUTES")}>&and;</button> <button onClick={()=>handleTime("INCREMENT_MINUTES")}>&and;</button> <button onClick={()=>handleTime("INCREMENT_TENSECONDS")}>&and;</button> <button onClick={()=>handleTime("INCREMENT_SECONDS")}>&and;</button></> : null}
+      {editing ? 
+      <div onClick={()=>handleEditing(false)}>
+        {(Math.floor(seconds/60)/100).toFixed(2).slice(2,3)}{(Math.floor(seconds/60)/100).toFixed(2).slice(3)}:{((seconds%60)/100).toFixed(2).slice(2,3)}{((seconds%60)/100).toFixed(2).slice(3)}</div> : <div onClick={()=>handleEditing(true)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}</div>} 
+        {editing ? <><button onClick={()=>handleTime("DECREMENT_TENMINUTES")}>&or;</button> <button onClick={()=>handleTime("DECREMENT_MINUTES")}>&or;</button> <button onClick={()=>handleTime("DECREMENT_TENSECONDS")}>&or;</button> <button onClick={()=>handleTime("DECREMENT_SECONDS")}>&or;</button></> : null}
     </div>
-    <div className="row">
+    {editing ? null : <div className="row">
       <button onClick={toggle}>
         {isActive ? 'Pause' : 'Start'}
       </button>
       <button className="button" onClick={reset}>
         Reset
       </button>
-    </div>
+    </div> }
+    
   </div>
   )
 }
