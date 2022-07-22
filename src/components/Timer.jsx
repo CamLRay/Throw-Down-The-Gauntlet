@@ -1,3 +1,4 @@
+import { getToggleButtonUtilityClass } from '@mui/material';
 import { React, useState, useEffect, useRef } from 'react'
 
 function Timer() {
@@ -9,6 +10,11 @@ function Timer() {
 
   const toggle = () =>{
     setIsActive(!isActive);
+  }
+
+  const editingToggle = (bool) => {
+    setEditing(bool);
+    setIsActive(false);
   }
 
   const reset = () =>{
@@ -58,10 +64,10 @@ function Timer() {
   return (
     <div className="app">
     <div style={clockStyle}>
-      {editing ? <><input type='number' placeholder='Enter minutes...' autoFocus onChange={(e)=>handleTime(e.target.value)} /><button onClick={()=>setEditing(false)}>Set</button></> : <div onClick={()=>setEditing(true)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}</div>} 
+      {editing ? <><input type='number' placeholder='Enter minutes...' autoFocus onChange={(e)=>handleTime(e.target.value)} /><button onClick={()=>editingToggle(false)}>Set</button></> : <div onClick={()=>editingToggle(true)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}</div>} 
     </div>
     <div className="row">
-      <button className={`button button-primary button-primary-${isActive ? 'active' : 'inactive'}`} onClick={toggle}>
+      <button onClick={toggle}>
         {isActive ? 'Pause' : 'Start'}
       </button>
       <button className="button" onClick={reset}>
