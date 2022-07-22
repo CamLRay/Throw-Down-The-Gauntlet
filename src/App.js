@@ -6,14 +6,14 @@ import Koth from './components/Koth';
 
 function App() {
   return (
-  <>
+  <div className='App'>
   <h1>Throw down the Gauntlet</h1>
   <Routes>
     <Route path='/' element={<Home />} />
     <Route path='/tournaments' element={<TournamentControl />} />
     <Route path='/koth' element={<Koth />} />
   </Routes>
-  </>
+  </div>
   );
 }
 
