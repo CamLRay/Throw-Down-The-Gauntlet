@@ -10,6 +10,7 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 
+
 function App() {
   const navStyle = {
     marginTop: '0',
@@ -20,7 +21,7 @@ function App() {
     <>
       <AuthContextProvider>
         <div className='App'>
-          <h1 style={navStyle}>Nav placeholder</h1>
+          <div style={navStyle}>Placeholder</div>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/signup' element ={<Signup />} />
