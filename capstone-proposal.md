@@ -8,7 +8,7 @@
 #### The goal of Throw down the Gauntlet is to provide foam fighters with a digital solution to fighting tournament organization and running. For too long has the foam fightings scene relied on paper sign up sheets, hand drawn brackets, and tally marked scorekeeping. This is not only time consuming, but highly error prone. TDTG aims to reduce those errors and ease theb urden on trounament organizers. TDTG should reduce the number of voluteers required to run a tournament and the time it takes to manage sign-ups and preparing rounds.
 
 ### **List the absolute minimum features the project requires to meet this purpose or goal:**
-* Tournament creation for popular style: 
+* Tournament creation for a popular style: 
   1. King of the hill
   2. Bracketed
       1. seeded or not
@@ -17,10 +17,10 @@
   3. Round Robin
   4. Swiss
   5. Hybrid(pools for seeding brackets)
-* Participant Entry styles
+* Participant Entry formats
   1. CSV (exportable from excel or google sheets)
   2. Manualy add individuals
-* Automatic bracket building
+* Automatic bracket building or streak counting
 * Score keeping UI
 * Post tournament result calculation
 

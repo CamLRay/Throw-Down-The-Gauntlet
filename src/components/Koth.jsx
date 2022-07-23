@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { v4 } from 'uuid'
 import Ring from './Ring'
 import ScoreBoard from './ScoreBoard'
-import Timer from './Timer'
+import Timer from './Timer/Timer'
 
 function Koth() {
 const [counters, setCounters] = useState([
