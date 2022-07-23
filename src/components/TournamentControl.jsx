@@ -1,5 +1,5 @@
 import Koth from "./Koth";
-import TournamentCreate from "./TournamentCreate";
+import TournamentCreate from "./TournamentCreate/TournamentCreate";
 import TournamentNav from "./TournamentNav";
 import { useState } from "react";
 // import { v4 } from "uuid";

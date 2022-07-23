@@ -2,6 +2,7 @@ import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import Home from './components/Home';
 import TournamentControl from './components/TournamentControl';
+import TournamentCreate from './components/TournamentCreate/TournamentCreate';
 import Koth from './components/Koth';
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -10,11 +11,16 @@ import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 
 function App() {
+  const navStyle = {
+    marginTop: '0',
+    backgroundColor: 'black'
+
+  }
   return (
     <>
       <AuthContextProvider>
         <div className='App'>
-          <h1>Throw down the Gauntlet</h1>
+          <h1 style={navStyle}>Nav placeholder</h1>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/signup' element ={<Signup />} />
@@ -23,9 +29,13 @@ function App() {
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>} />
-            <Route path='/tournaments' element={
+            <Route path='/tournament/:id' element={
               <ProtectedRoute>
                 <TournamentControl />
+              </ProtectedRoute>} />
+              <Route path='/tournament/new' element={
+              <ProtectedRoute>
+                <TournamentCreate />
               </ProtectedRoute>} />   
             <Route path='/koth' element={
                 <ProtectedRoute>
