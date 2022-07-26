@@ -8,10 +8,14 @@ import { v4 } from 'uuid';
 function Dashboard() {
   const [list, setList] = useState([]);
   const {user} = useAuth();
-  console.log(user)
-  const tourniesRef = collection(db, 'tournaments')
-  const usersTournies = query(tourniesRef, where('toid', '==', user.uid ));
+  
+    
+
   useEffect(()=>{
+    if(user.uid){
+
+    const tourniesRef = collection(db, 'tournaments')
+    const usersTournies = query(tourniesRef, where('toid', '==', user.uid ));
     onSnapshot(usersTournies, (snapshot) => {
     
       let tournaments = []
@@ -20,12 +24,14 @@ function Dashboard() {
       
       })
       setList(tournaments)
+    
     })
-  },[])
+  }
+  },[user])
 
 
 
-  
+
 
 
     
@@ -42,9 +48,9 @@ function Dashboard() {
       <button className='m-1'>Complete-{}</button>
     </div>
     <div>
-      {list.map((tournament)=>{
+      {list.length ? list.map((tournament)=>{
         return <div key={v4()}><Link to={'/tournament/'+ tournament.id}>{tournament.name}</Link></div>
-      })}
+      }): "Loading"}
     </div>
     </>
 
