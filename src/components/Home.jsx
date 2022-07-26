@@ -4,7 +4,7 @@ const Home = () =>{
   return( 
     <>
       <h1>Homepage</h1>
-      <Link to='/tournaments'>Create Tournament</Link>
+      <Link to='/tournament/new'>Create Tournament</Link>
     </>
   
   );

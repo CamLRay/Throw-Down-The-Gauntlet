@@ -2,12 +2,14 @@ import Koth from "./Koth";
 import TournamentCreate from "./TournamentCreate/TournamentCreate";
 import TournamentNav from "./TournamentNav";
 import { useState } from "react";
-// import { v4 } from "uuid";
+import { useParams } from "react-router-dom";
 
 
 const TournamentControl = () =>{
   const [visibleComponent, setVisibleComponent] = useState(null);
   const [tournamentDetails, setTournamentDetails] = useState({style:'koth'});
+
+  const params = useParams();
 
 
   const handleTournamentCreation = (details) =>{

@@ -9,6 +9,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
+import Navigation from './components/TopMenu';
+
 
 
 function App() {
@@ -21,7 +23,7 @@ function App() {
     <>
       <AuthContextProvider>
         <div className='App'>
-          <div style={navStyle}>Placeholder</div>
+          <Navigation />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/signup' element ={<Signup />} />
@@ -30,7 +32,7 @@ function App() {
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>} />
-            <Route path='/tournament/:id' element={
+            <Route path='/tournament/:tournyId' element={
               <ProtectedRoute>
                 <TournamentControl />
               </ProtectedRoute>} />
