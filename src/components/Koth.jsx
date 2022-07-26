@@ -6,21 +6,13 @@ import ScoreBoard from './ScoreBoard'
 import Timer from './Timer/Timer'
 import AddPlayers from './AddPlayers'
 
-function Koth() {
-const [counters, setCounters] = useState([
-      // {name:'Britany', persona:'Satsuki', totalCount: 0, history:[], id: v4()},
-      // {name:'Zofia', persona: 'Misaki', totalCount: 0, history:[], id: v4()},
-      // {name:'Ayub', persona: 'Simone', totalCount: 0, history:[], id: v4()},
-      // {name:'Cory', persona: 'Fai', totalCount: 0, history:[], id: v4()},
-      // {name:'Cora', persona: 'Sion', totalCount: 0, history:[], id: v4()},
-      // {name:'Jed', persona: 'Dagon', totalCount: 0, history:[], id: v4()},
-    ])
+function Koth(props) {
+const [counters, setCounters] = useState(props.counters)
 
 const handleTotalCount = (counterToUpdate, lastCounter) =>{
   if(lastCounter){
     const tempCounter = counters.filter((counter)=> counter.id !== counterToUpdate.id).filter((counter)=> counter.id !== lastCounter.id);
     setCounters([...tempCounter, {...counterToUpdate}, {...lastCounter}])
-    console.log(counters)
   }else {
     const tempCounter = counters.filter((counter)=> counter.id !== counterToUpdate.id);
     setCounters([...tempCounter, {...counterToUpdate}])

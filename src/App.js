@@ -10,6 +10,8 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 import Navigation from './components/TopMenu';
+import AddPlayers from './components/AddPlayers';
+import Standings from './components/Standings';
 
 
 
@@ -35,7 +37,11 @@ function App() {
             <Route path='/tournament/:tournyId' element={
               <ProtectedRoute>
                 <TournamentControl />
-              </ProtectedRoute>} />
+              </ProtectedRoute>}>
+                {/* <Route path="" element={<TournamentControl />}></Route> */}
+                <Route path="standings" element={<ProtectedRoute><Standings /></ProtectedRoute>}></Route>
+                <Route path="players" element={<ProtectedRoute><AddPlayers /></ProtectedRoute>}></Route>
+            </Route>
               <Route path='/tournament/new' element={
               <ProtectedRoute>
                 <TournamentCreate />
