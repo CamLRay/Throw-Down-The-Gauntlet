@@ -25,7 +25,7 @@ const TournamentControl = () =>{
   if(Object.keys(tournamentDetails).length){
   console.log(tournamentDetails)
 
-  if(tournamentDetails.style.groups === 'koth'){
+ 
     return(
       
       <>
@@ -38,18 +38,7 @@ const TournamentControl = () =>{
       {name:'Cora', persona: 'Sion', totalCount: 0, history:[], id: v4()},
       {name:'Jed', persona: 'Dagon', totalCount: 0, history:[], id: v4()},
     ]}/>
-      {/* <Koth 
-    counters={[
-      {name:'Britany', persona:'Satsuki', totalCount: 0, history:[], id: v4()},
-      {name:'Zofia', persona: 'Misaki', totalCount: 0, history:[], id: v4()},
-      {name:'Ayub', persona: 'Simone', totalCount: 0, history:[], id: v4()},
-      {name:'Cory', persona: 'Fai', totalCount: 0, history:[], id: v4()},
-      {name:'Cora', persona: 'Sion', totalCount: 0, history:[], id: v4()},
-      {name:'Jed', persona: 'Dagon', totalCount: 0, history:[], id: v4()},
-    ]}
-      /> */}
-          
-  
+      
       </>
       
     )
@@ -63,5 +52,5 @@ const TournamentControl = () =>{
   // ) 
   }
 }
-}
+
 export default TournamentControl;

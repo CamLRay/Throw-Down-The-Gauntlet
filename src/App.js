@@ -38,7 +38,6 @@ function App() {
               <ProtectedRoute>
                 <TournamentControl />
               </ProtectedRoute>}>
-                {/* <Route path="" element={<TournamentControl />}></Route> */}
                 <Route path="standings" element={<ProtectedRoute><Standings /></ProtectedRoute>}></Route>
                 <Route path="players" element={<ProtectedRoute><AddPlayers /></ProtectedRoute>}></Route>
             </Route>
