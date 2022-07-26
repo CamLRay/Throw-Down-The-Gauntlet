@@ -4,15 +4,16 @@ import { v4 } from 'uuid'
 import Ring from './Ring'
 import ScoreBoard from './ScoreBoard'
 import Timer from './Timer/Timer'
+import AddPlayers from './AddPlayers'
 
 function Koth() {
 const [counters, setCounters] = useState([
-      {name:'Britany', persona:'Satsuki', totalCount: 0, history:[], id: v4()},
-      {name:'Zofia', persona: 'Misaki', totalCount: 0, history:[], id: v4()},
-      {name:'Ayub', persona: 'Simone', totalCount: 0, history:[], id: v4()},
-      {name:'Cory', persona: 'Fai', totalCount: 0, history:[], id: v4()},
-      {name:'Cora', persona: 'Sion', totalCount: 0, history:[], id: v4()},
-      {name:'Jed', persona: 'Dagon', totalCount: 0, history:[], id: v4()},
+      // {name:'Britany', persona:'Satsuki', totalCount: 0, history:[], id: v4()},
+      // {name:'Zofia', persona: 'Misaki', totalCount: 0, history:[], id: v4()},
+      // {name:'Ayub', persona: 'Simone', totalCount: 0, history:[], id: v4()},
+      // {name:'Cory', persona: 'Fai', totalCount: 0, history:[], id: v4()},
+      // {name:'Cora', persona: 'Sion', totalCount: 0, history:[], id: v4()},
+      // {name:'Jed', persona: 'Dagon', totalCount: 0, history:[], id: v4()},
     ])
 
 const handleTotalCount = (counterToUpdate, lastCounter) =>{
@@ -28,6 +29,9 @@ const handleTotalCount = (counterToUpdate, lastCounter) =>{
 }
 
 
+if(counters.length < 1){
+  return <AddPlayers />
+} else {
 
   return (
     <>
@@ -39,6 +43,7 @@ const handleTotalCount = (counterToUpdate, lastCounter) =>{
       <Ring counters={counters} onCounterClick={handleTotalCount}/>
     </>
   )
+}
 }
 
 export default Koth

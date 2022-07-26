@@ -16,7 +16,7 @@ function Dashboard() {
 
     const tourniesRef = collection(db, 'tournaments')
     const usersTournies = query(tourniesRef, where('toid', '==', user.uid ));
-    onSnapshot(usersTournies, (snapshot) => {
+    const unsub = onSnapshot(usersTournies, (snapshot) => {
     
       let tournaments = []
       snapshot.docs.forEach((doc) => {
@@ -25,7 +25,8 @@ function Dashboard() {
       })
       setList(tournaments)
     
-    })
+    });
+    return ()=> unsub();
   }
   },[user])
 

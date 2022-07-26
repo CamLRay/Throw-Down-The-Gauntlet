@@ -3,7 +3,7 @@ import SingleStage from "./SingleStage";
 import { v4 } from "uuid";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, DocumentReference } from 'firebase/firestore'
 import { db } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 
@@ -29,8 +29,13 @@ const TournamentCreate = (props) =>{
         style: style,
         length: parseInt(length),
         categories: categories
-      });
-      navigate('/tournament');
+      })
+        .then((docRef)=>{
+          navigate('/tournament/' + docRef.id)
+        })
+        .catch((error)=>{
+          console.error("Error adding document: ", error)
+        })
     }  
     
   }
