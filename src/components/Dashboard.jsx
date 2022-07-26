@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
 import { db } from '../firebase-config';
@@ -8,19 +8,21 @@ import { v4 } from 'uuid';
 function Dashboard() {
   const [list, setList] = useState([]);
   const {user} = useAuth();
-  console.log("test")
+  console.log(user)
   const tourniesRef = collection(db, 'tournaments')
   const usersTournies = query(tourniesRef, where('toid', '==', user.uid ));
-  
-  onSnapshot(usersTournies, (snapshot) => {
+  useEffect(()=>{
+    onSnapshot(usersTournies, (snapshot) => {
     
-    let tournaments = []
-    snapshot.docs.forEach((doc) => {
-      tournaments.push({...doc.data(), id: doc.id})
-    
+      let tournaments = []
+      snapshot.docs.forEach((doc) => {
+        tournaments.push({...doc.data(), id: doc.id})
+      
+      })
+      setList(tournaments)
     })
-    // setList(tournaments)
   },[])
+
 
 
   
