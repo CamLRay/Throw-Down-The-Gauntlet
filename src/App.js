@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Home from './components/Home';
 import TournamentControl from './components/TournamentControl';
 import TournamentCreate from './components/TournamentCreate/TournamentCreate';
-import Koth from './components/Koth';
+import Koth from './components/BracketControl/Koth';
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Signin from './components/Signin';
@@ -12,6 +12,7 @@ import Dashboard from './components/Dashboard';
 import Navigation from './components/TopMenu';
 import AddPlayers from './components/AddPlayers';
 import Standings from './components/Standings';
+import BracketControl from './components/BracketControl/BracketControl';
 
 
 
@@ -34,10 +35,11 @@ function App() {
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>} />
-            <Route path='/tournament/:tournyId' element={
+            <Route exact path='/tournament/:tournyId' element={
               <ProtectedRoute>
                 <TournamentControl />
               </ProtectedRoute>}>
+                <Route path='' element={<ProtectedRoute><BracketControl /></ProtectedRoute>} />
                 <Route path="standings" element={<ProtectedRoute><Standings /></ProtectedRoute>}></Route>
                 <Route path="players" element={<ProtectedRoute><AddPlayers /></ProtectedRoute>}></Route>
             </Route>

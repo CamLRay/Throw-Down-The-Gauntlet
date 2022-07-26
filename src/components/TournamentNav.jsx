@@ -1,8 +1,24 @@
 import { Link } from "react-router-dom";
 import { UserGroupIcon } from '@heroicons/react/solid'
+import { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+
 
 const TournamentNav = (props) =>{
   const { details } = props;
+  const location = useLocation();
+  const param = useParams();
+  const [path, setPath] = useState(null)
+  
+
+  useEffect(()=>{
+    if(location) {
+      let tempPath = location.pathname.slice(location.pathname.lastIndexOf('/'), location.pathname.length);
+      setPath(tempPath)
+    }
+  },[location])
+  console.log(path)
+  console.log(param)
   return (
     <>
     <div className="w-screen bg-slate-500 pl-2">
@@ -19,9 +35,9 @@ const TournamentNav = (props) =>{
         </div>
       </div>
       <nav className="text-white flex justify-center">
-        <Link to=''><button className="p-1 bg-slate-500">Bracket</button></Link>
-        <Link to='standings'><button className="p-1 bg-slate-500">Standings</button></Link>
-        <Link to='players'><button className="p-1 bg-slate-500">Players</button></Link>
+      <Link to='' className={path === `/${param.tournyId}` ? "p-1 bg-slate-500 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-500"}>Bracket</Link>
+        <Link to='standings' className={ path ==='/standings' ? "p-1 bg-slate-500 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-500"} >Standings</Link>
+        <Link to='players' className={  path === '/players' ? "p-1 bg-slate-500 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-500"} >Players</Link>
       </nav>
     </div>
     </>

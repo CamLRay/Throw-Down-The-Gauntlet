@@ -30,12 +30,6 @@ function Dashboard() {
   }
   },[user])
 
-
-
-
-
-
-    
   return (
     <>
     <h1>Your tournaments</h1>
@@ -50,7 +44,7 @@ function Dashboard() {
     </div>
     <div>
       {list.length ? list.map((tournament)=>{
-        return <div key={v4()}><Link to={'/tournament/'+ tournament.id}>{tournament.name}</Link></div>
+        return <div key={v4()}><Link to={`/tournament/${tournament.id}`}>{tournament.name}</Link></div>
       }): "Loading"}
     </div>
     </>

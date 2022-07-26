@@ -1,4 +1,4 @@
-import Koth from "./Koth";
+import Koth from "./BracketControl/Koth";
 import TournamentNav from "./TournamentNav";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -10,8 +10,15 @@ import { Outlet } from "react-router-dom";
 
 
 const TournamentControl = () =>{
-  const [visibleComponent, setVisibleComponent] = useState(null);
   const [tournamentDetails, setTournamentDetails] = useState({});
+  const [players, setPlayers] = useState([
+    {name:'Britany', persona:'Satsuki', totalCount: 0, history:[], id: v4()},
+    {name:'Zofia', persona: 'Misaki', totalCount: 0, history:[], id: v4()},
+    {name:'Ayub', persona: 'Simone', totalCount: 0, history:[], id: v4()},
+    {name:'Cory', persona: 'Fai', totalCount: 0, history:[], id: v4()},
+    {name:'Cora', persona: 'Sion', totalCount: 0, history:[], id: v4()},
+    {name:'Jed', persona: 'Dagon', totalCount: 0, history:[], id: v4()},
+  ])
   const params = useParams();
   const tourniesRef = doc(db, 'tournaments', params.tournyId)
   useEffect(()=>{
@@ -24,32 +31,32 @@ const TournamentControl = () =>{
 
   if(Object.keys(tournamentDetails).length){
   console.log(tournamentDetails)
+    // switch(tournamentDetails.style.groups){
+    //   case 'koth':
+    //     setVisibleComponent(<Koth />)
+    //     break;
+    //   default:
+    //     setVisibleComponent(null)
+    //     break;
+    // }
 
- 
     return(
-      
       <>
       <TournamentNav details={tournamentDetails}/>
-      <Outlet counters={[
-      {name:'Britany', persona:'Satsuki', totalCount: 0, history:[], id: v4()},
-      {name:'Zofia', persona: 'Misaki', totalCount: 0, history:[], id: v4()},
-      {name:'Ayub', persona: 'Simone', totalCount: 0, history:[], id: v4()},
-      {name:'Cory', persona: 'Fai', totalCount: 0, history:[], id: v4()},
-      {name:'Cora', persona: 'Sion', totalCount: 0, history:[], id: v4()},
-      {name:'Jed', persona: 'Dagon', totalCount: 0, history:[], id: v4()},
-    ]}/>
+      <Outlet context={[players]}/>
       
       </>
-      
     )
   } 
   else {
-  // return(
+  return(  
   //   <>
   //     <TournamentNav details={tournamentDetails}/>
-      
+      <div>
+        Loading
+      </div>
   //   </>
-  // ) 
+  ) 
   }
 }
 
