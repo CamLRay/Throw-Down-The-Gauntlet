@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from '../firebase-config';
 import { useAuth } from '../context/AuthContext';
 import { v4 } from 'uuid';

@@ -2,13 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import Ring from '../Ring'
 import ScoreBoard from '../ScoreBoard'
-import Timer from '../Timer/Timer'
-import AddPlayers from '../AddPlayers'
 import { useOutletContext } from 'react-router-dom'
 
 function Koth() {
-const [players] = useOutletContext();
-const [counters, setCounters] = useState(players)
+const [tournamentDetails] = useOutletContext();
+const [counters, setCounters] = useState(tournamentDetails.players)
 
 const handleTotalCount = (counterToUpdate, lastCounter) =>{
   if(lastCounter){
@@ -23,12 +21,11 @@ const handleTotalCount = (counterToUpdate, lastCounter) =>{
 
 
 if(counters.length < 1){
-  return <AddPlayers />
+  return "No participants added"
 } else {
 
   return (
     <>
-      <Timer />
       <ScoreBoard counters={counters}/>
       <button>Add Ring</button>
       <button>Remove Ring</button>

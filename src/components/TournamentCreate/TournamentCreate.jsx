@@ -1,16 +1,16 @@
 import TwoStage from "./TwoStage";
 import SingleStage from "./SingleStage";
 import { v4 } from "uuid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { addDoc, collection, DocumentReference } from 'firebase/firestore'
+import { addDoc, collection} from 'firebase/firestore'
 import { db } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 
 const TournamentCreate = (props) =>{
   const [name, setName] = useState('');
   const [isTwoStage, setIsTwoStage] = useState(false);
-  const [style, setStyle] = useState({groups: "koth", elim: null});
+  const [style, setStyle] = useState({groups: null, elim: null});
   const [categoryToAdd, setCategoryToAdd] = useState('');
   const [categories, setCategories] = useState([]);
   const [length, setLength] = useState(0);
@@ -18,6 +18,10 @@ const TournamentCreate = (props) =>{
 
   const {user} = useAuth();
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    console.log(style)
+  },[style])
 
   const onSubmit = async(e) =>{
     e.preventDefault();
@@ -28,7 +32,8 @@ const TournamentCreate = (props) =>{
         description: description,
         style: style,
         length: parseInt(length),
-        categories: categories
+        categories: categories,
+        players:[]
       })
         .then((docRef)=>{
           navigate('/tournament/' + docRef.id)
@@ -76,7 +81,7 @@ const TournamentCreate = (props) =>{
           <label htmlFor='two'>Two Stage</label>
         </div>
         <label>Format</label>
-        {isTwoStage ? <TwoStage setStyle={setStyle} /> : <SingleStage setTyle={setStyle} />}
+        {isTwoStage ? <TwoStage setStyle={[setStyle]} /> : <SingleStage setTyle={[setStyle]} />}
       </div>
       <button>Create Tournament</button>
     </form>

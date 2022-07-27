@@ -2,12 +2,13 @@ import './Timer.css'
 import { React, useState, useEffect, useRef } from 'react'
 
 
-function Timer() {
-  const [seconds, setSeconds] = useState(0);
+function Timer(props) {
+  const time = props.time * 60;
+  const [seconds, setSeconds] = useState(time);
   const [isActive, setIsActive] = useState(false);
   const [editing, setEditing] = useState(false);
   const [color, setColor] = useState('white');
-  const timeRef = useRef(0)
+  const timeRef = useRef(time)
 
   const toggle = () =>{
     setIsActive(!isActive);
@@ -142,14 +143,14 @@ function Timer() {
       </div>} 
 
     </div>
-    {editing ? null : <div className="row">
-      <button onClick={toggle}>
-        {isActive ? 'Pause' : 'Start'}
-      </button>
-      <button className="button" onClick={reset}>
-        Reset
-      </button>
-    </div> }
+    <div className="mt-0">
+    {editing ? null : 
+      <>
+        <button onClick={toggle}>{isActive ? 'Pause' : 'Start'}</button>
+        <button className="button" onClick={reset}>Reset</button>
+      </>
+    }
+    </div> 
     
   </div>
   )

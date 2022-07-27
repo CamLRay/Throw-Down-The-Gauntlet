@@ -26,7 +26,6 @@ const TournamentControl = () =>{
   useEffect(()=>{
   const unsub = onSnapshot(tourniesRef, (doc) => {
   setTournamentDetails(doc.data())
-  console.log(doc.data().players)
   })
   return ()=> unsub();
 
@@ -37,7 +36,7 @@ const TournamentControl = () =>{
     return(
       <>
       <TournamentNav details={tournamentDetails}/>
-      <Outlet context={[players, tournamentDetails]}/>
+      <Outlet context={[tournamentDetails]}/>
       
       </>
     )
