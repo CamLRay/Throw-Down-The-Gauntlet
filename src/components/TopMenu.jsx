@@ -29,7 +29,7 @@ function TopMenu() {
 
   return (
     <>
-      <div className='bg-slate-800 min-h-fit w-screen flex justify-between p-3'>
+      <div className='bg-slate-800 min-h-fit w-screen flex justify-between p-3 pr-5'>
         <Link to="/"><img className='w-8' src={logo} alt='logo' /></Link>
         <h1 className='text-2xl font-bold text-amber-500'>Throw Down The Gauntlet</h1>
         
