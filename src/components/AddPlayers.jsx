@@ -91,9 +91,9 @@ function AddPlayers() {
         <button type="button" className='bg-red-700 text-white p-1 m-1 rounded hover:bg-red-500' onClick={()=>setClearModal(!clearModal)}>Clear list</button>
       </form>
       <ul>
-        <li className="text-amber-600 p-1 my-1"><span className='bg-slate-700 px-2 '>#</span> Name - Persona</li>
+        <li className="text-amber-600 p-1 my-1"><span className='bg-slate-800 px-2 '>#</span> Name - Persona</li>
         {playerList.length ? playerList.map((player, index)=>{
-            return <li key={player.id} className="text-white bg-gray-700 p-1 my-1 border-2 border-amber-600 rounded flex justify-between"><div><span className='bg-slate-700 text-amber-600 px-2'>{index + 1}</span> {player.name} - {player.persona}</div><div className='flex'>
+            return <li key={player.id} className="text-white bg-gray-700 p-1 my-1 border-2 border-amber-600 rounded flex justify-between"><div><span className='bg-slate-800 text-amber-600 px-2'>{index + 1}</span> {player.name} - {player.persona}</div><div className='flex'>
               <PencilIcon className='hover:text-amber-500 w-5 text-white/50' onClick={()=>handleEditModal(player)} />
               <TrashIcon className='hover:text-amber-500 w-5 text-white/50' onClick={()=>handleDelete(player.id)} /></div></li>
           }): <div>List Empty </div>}
