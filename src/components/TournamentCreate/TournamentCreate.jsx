@@ -48,8 +48,8 @@ const TournamentCreate = (props) =>{
   return(
     <>
     <form className="flex-col w-initial text-white " onSubmit={onSubmit} onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}>
-        <div className='p-5'>
-          <div className="bg-slate-700 flex flex-col rounded mb-5">
+        <div className='p-5 pt-2'>
+          <div className="bg-slate-700 flex flex-col rounded mb-2">
             <h3 className="bg-slate-800 p-1 pl-2">Info</h3>
             <div className="flex justify-between p-2">
               <label className="w-1/3">Tournament name</label>
@@ -60,7 +60,7 @@ const TournamentCreate = (props) =>{
               <textarea className='w-2/3 h-40 bg-gray-600 p-1 rounded' onChange={(e)=>setDescription(e.target.value)} required/>
             </div>
           </div>
-          <div className="bg-slate-700 flex flex-col rounded mb-5">
+          <div className="bg-slate-700 flex flex-col rounded mb-2">
             <h3 className="bg-slate-800 p-1 pl-2">Rules</h3>
             <div>
               <div className="flex justify-between p-2">

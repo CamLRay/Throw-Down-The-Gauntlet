@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+
 const ScoreBoard = (props) =>{
   const {counters} = props;
   
@@ -8,7 +10,7 @@ const ScoreBoard = (props) =>{
     {counters.sort((a, b)=>(a.totalCount < b.totalCount) ? 1 : ((b.totalCount < a.totalCount) ? -1 : 0)).map((player,i)=>{
       
       return(
-        <div key={player.id}>
+        <div key={v4()}>
           <p>{player.name}|wins:{player.totalCount} history:{player.history.map((streak)=>{return streak + " "})}</p>
         </div>
       ) 

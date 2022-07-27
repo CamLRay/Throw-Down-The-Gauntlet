@@ -1,4 +1,5 @@
 import {React, useState} from 'react'
+import { v4 } from 'uuid';
 
 
 
@@ -32,7 +33,7 @@ function Ring(props) {
     <>
     <div>{lastClicked.name}-{streak}</div>
       {counters.sort((a, b)=>(a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).map((counter)=>{
-        return <button key={counter.id} onClick={()=>handleClick(counter)}>{counter.name}</button>
+        return <button key={v4()} onClick={()=>handleClick(counter)}>{counter.name}</button>
       })}
     </>
   )

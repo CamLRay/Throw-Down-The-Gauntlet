@@ -1,5 +1,5 @@
-import './Timer.css'
 import { React, useState, useEffect, useRef } from 'react'
+import { ChevronDownIcon, ChevronUpIcon, PlayIcon, PauseIcon, RefreshIcon  } from '@heroicons/react/solid';
 
 
 function Timer(props) {
@@ -40,11 +40,11 @@ function Timer(props) {
 
   useEffect(()=>{
     if(parseInt(seconds) < 60){
-      setColor('red');
+      setColor('text-red-600');
     } else if (parseInt(seconds) < 300){
-      setColor('yellow');
+      setColor('text-orange-500');
     } else if (parseInt(seconds) >= 300){
-      setColor('white');
+      setColor('text-amber-400');
     }
   },[seconds])
 
@@ -102,53 +102,37 @@ function Timer(props) {
         return;
     }
   }
-
-  const clockStyle = {
-    display: 'inline-grid',
-    gridTemplateColumns: 'auto auto auto auto auto',
-    fontFamily: 'digital-7',
-    src: "url('../assets/fonts/digital-7.ttf')",
-    color: color,
-    fontSize: '6rem',
-    margin: '0px'
-  }
-
-  const digitStyle = {
-    fontSize:'3rem'
-    
-  }
-
-  // <><input type='number' placeholder='Enter minutes...' autoFocus onChange={(e)=>handleTime(e.target.value)} /><button onClick={()=>handleEditing(false)}>Set</button></> : <div onClick={()=>handleEditing(true)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}</div>}
   
   return (
     <div>
-    <div style={clockStyle}>
+    {/* <div style={clockStyle}> */}
+      <div className={`font-['digital-7'] text-8xl inline-grid grid-cols-5 ${color}`}>
       {editing ? <>
-        <div style={digitStyle} className="clock-button" onClick={()=>handleTime("INCREMENT_TENMINUTES")}>&and;</div>
-        <div style={digitStyle} className="clock-button" onClick={()=>handleTime("INCREMENT_MINUTES")}>&and;</div>
-        <div> </div>
-        <div style={digitStyle} className="clock-button" onClick={()=>handleTime("INCREMENT_TENSECONDS")}>&and;</div>
-        <div style={digitStyle} className="clock-button" onClick={()=>handleTime("INCREMENT_SECONDS")}>&and;</div>
+        <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("INCREMENT_TENMINUTES")}><ChevronUpIcon /></div>
+        <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("INCREMENT_MINUTES")}><ChevronUpIcon /></div>
+        <div></div>
+        <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("INCREMENT_TENSECONDS")}><ChevronUpIcon /></div>
+        <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("INCREMENT_SECONDS")}><ChevronUpIcon /></div>
         <div onClick={()=>handleEditing(false)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2,3)}</div>
         <div onClick={()=>handleEditing(false)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(3)}</div>
         <div onClick={()=>handleEditing(false)}>:</div>
         <div onClick={()=>handleEditing(false)}>{((seconds%60)/100).toFixed(2).slice(2,3)}</div>
         <div onClick={()=>handleEditing(false)}>{((seconds%60)/100).toFixed(2).slice(3)}</div>
-        <div style={digitStyle} className="clock-button" onClick={()=>handleTime("DECREMENT_TENMINUTES")}>&or;</div>
-        <div style={digitStyle} className="clock-button" onClick={()=>handleTime("DECREMENT_MINUTES")}>&or;</div>
-        <div> </div>
-        <div style={digitStyle} className="clock-button" onClick={()=>handleTime("DECREMENT_TENSECONDS")}>&or;</div>
-        <div style={digitStyle} className="clock-button" onClick={()=>handleTime("DECREMENT_SECONDS")}>&or;</div>
+        <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("DECREMENT_TENMINUTES")}><ChevronDownIcon /></div>
+        <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("DECREMENT_MINUTES")}><ChevronDownIcon /></div>
+        <div></div>
+        <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("DECREMENT_TENSECONDS")}><ChevronDownIcon /></div>
+        <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("DECREMENT_SECONDS")}><ChevronDownIcon /></div>
         </> : <div onClick={()=>handleEditing(true)}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}
       </div>} 
 
     </div>
     <div className="mt-0">
     {editing ? null : 
-      <>
-        <button onClick={toggle}>{isActive ? 'Pause' : 'Start'}</button>
-        <button className="button" onClick={reset}>Reset</button>
-      </>
+      <div className='flex justify-center'>
+        {isActive ? <PauseIcon className='text-amber-500 hover:text-green-500 h-12' onClick={toggle} /> : <PlayIcon className="text-green-500 hover:text-amber-500 h-12" onClick={toggle}/>} 
+        <RefreshIcon className='text-red-700 hover:text-red-900 h-12' onClick={reset}/>
+      </div>
     }
     </div> 
     

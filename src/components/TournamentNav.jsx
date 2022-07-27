@@ -24,20 +24,20 @@ const TournamentNav = (props) =>{
     <>
     <div className="w-screen bg-slate-700 p-2 pb-0">
       <div className="flex justify-between">
-        <div className='text-white'>
+        <div className='text-white w-1/3'>
           <h3 className="text-3xl font-bold">{details.name}</h3>
           <div className="flex">
             <UserGroupIcon className="h-5 text-amber-500 mr-1" />
             <p>{details.players.length} Players</p>
           </div>
-          <p>{details.style.groups}</p>
+          <p>{details.style.groups}{details.style.elim ? ` - ${details.style.elim}` : null}</p>
           <div>
             <p>Tournament Organizer</p>
             <p>{details.toname}</p>
           </div>
         </div>
-        <div className="text-center">{timerVisible ? <Timer time={details.length} /> : <button>Show timer</button>}</div>
-        <div className="w-40"></div>
+        <div className="w-1/3 text-center">{timerVisible ? <Timer time={details.length} /> : <button>Show timer</button>}</div>
+        <div className="w-1/3" />
       </div>
       
       
