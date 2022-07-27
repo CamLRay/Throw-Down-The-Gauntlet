@@ -17,16 +17,15 @@ const TournamentNav = (props) =>{
       setPath(tempPath)
     }
   },[location])
-  console.log(path)
-  console.log(param)
+  
   return (
     <>
-    <div className="w-screen bg-slate-500 pl-2">
+    <div className="w-screen bg-slate-700 p-2 pb-0">
       <div className='text-white'>
         <h3 className="text-3xl font-bold">{details.name}</h3>
         <div className="flex">
           <UserGroupIcon className="h-5 text-amber-500 mr-1" />
-          <p>{details.players} Players</p>
+          <p>{details.players.length} Players</p>
         </div>
         <p>{details.style.groups}</p>
         <div>
@@ -34,10 +33,10 @@ const TournamentNav = (props) =>{
           <p>{details.toname}</p>
         </div>
       </div>
-      <nav className="text-white flex justify-center">
-      <Link to='' className={path === `/${param.tournyId}` ? "p-1 bg-slate-500 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-500"}>Bracket</Link>
-        <Link to='standings' className={ path ==='/standings' ? "p-1 bg-slate-500 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-500"} >Standings</Link>
-        <Link to='players' className={  path === '/players' ? "p-1 bg-slate-500 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-500"} >Players</Link>
+      <nav className="text-white flex align-baseline justify-center">
+      <Link to='' className={path === `/${param.tournyId}` ? "p-1 bg-slate-700 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-700 hover:decoration-amber-500/50 hover:decoration-4 hover:underline hover:underline-offset-4"}>Bracket</Link>
+        <Link to='standings' className={ path ==='/standings' ? "p-1 bg-slate-700 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-700 hover:decoration-amber-500/50 hover:decoration-4 hover:underline hover:underline-offset-4"} >Standings</Link>
+        <Link to='players' className={  path === '/players' ? "p-1 bg-slate-700 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-700 hover:decoration-amber-500/50 hover:decoration-4 hover:underline hover:underline-offset-4"} >Players</Link>
       </nav>
     </div>
     </>

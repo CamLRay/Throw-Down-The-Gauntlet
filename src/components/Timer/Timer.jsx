@@ -47,11 +47,6 @@ function Timer() {
     }
   },[seconds])
 
-  // const handleTime = (time) =>{
-  //   setSeconds(time*60)
-  //   timeRef.current = time*60;
-  // }
-
   const handleTime = (digit) => {
     switch(digit){
       case 'INCREMENT_SECONDS':

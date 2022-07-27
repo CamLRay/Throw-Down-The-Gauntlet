@@ -29,7 +29,7 @@ function TopMenu() {
 
   return (
     <>
-      <div className='bg-slate-500 min-h-fit w-screen flex justify-between p-3 mb-2'>
+      <div className='bg-slate-800 min-h-fit w-screen flex justify-between p-3'>
         <Link to="/"><img className='w-8' src={logo} alt='logo' /></Link>
         
         

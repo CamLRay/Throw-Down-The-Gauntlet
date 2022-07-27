@@ -12,50 +12,41 @@ import { Outlet } from "react-router-dom";
 const TournamentControl = () =>{
   const [tournamentDetails, setTournamentDetails] = useState({});
   const [players, setPlayers] = useState([
-    {name:'Britany', persona:'Satsuki', totalCount: 0, history:[], id: v4()},
-    {name:'Zofia', persona: 'Misaki', totalCount: 0, history:[], id: v4()},
-    {name:'Ayub', persona: 'Simone', totalCount: 0, history:[], id: v4()},
-    {name:'Cory', persona: 'Fai', totalCount: 0, history:[], id: v4()},
-    {name:'Cora', persona: 'Sion', totalCount: 0, history:[], id: v4()},
-    {name:'Jed', persona: 'Dagon', totalCount: 0, history:[], id: v4()},
-  ])
+    // {name:'Britany', persona:'Satsuki', totalCount: 0, history:[], id: v4()},
+    // {name:'Zofia', persona: 'Misaki', totalCount: 0, history:[], id: v4()},
+    // {name:'Ayub', persona: 'Simone', totalCount: 0, history:[], id: v4()},
+    // {name:'Cory', persona: 'Fai', totalCount: 0, history:[], id: v4()},
+    // {name:'Cora', persona: 'Sion', totalCount: 0, history:[], id: v4()},
+    // {name:'Jed', persona: 'Dagon', totalCount: 0, history:[], id: v4()},
+  ]);
+
   const params = useParams();
   const tourniesRef = doc(db, 'tournaments', params.tournyId)
+
   useEffect(()=>{
   const unsub = onSnapshot(tourniesRef, (doc) => {
   setTournamentDetails(doc.data())
+  console.log(doc.data().players)
   })
   return ()=> unsub();
 
   },[]);
 
   if(Object.keys(tournamentDetails).length){
-  console.log(tournamentDetails)
-    // switch(tournamentDetails.style.groups){
-    //   case 'koth':
-    //     setVisibleComponent(<Koth />)
-    //     break;
-    //   default:
-    //     setVisibleComponent(null)
-    //     break;
-    // }
 
     return(
       <>
       <TournamentNav details={tournamentDetails}/>
-      <Outlet context={[players]}/>
+      <Outlet context={[players, tournamentDetails]}/>
       
       </>
     )
   } 
   else {
   return(  
-  //   <>
-  //     <TournamentNav details={tournamentDetails}/>
-      <div>
-        Loading
-      </div>
-  //   </>
+    <div>
+      Loading
+    </div>
   ) 
   }
 }

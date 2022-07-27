@@ -1,15 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
-import { v4 } from 'uuid'
 import Ring from '../Ring'
 import ScoreBoard from '../ScoreBoard'
 import Timer from '../Timer/Timer'
 import AddPlayers from '../AddPlayers'
 import { useOutletContext } from 'react-router-dom'
 
-function Koth(props) {
+function Koth() {
 const [players] = useOutletContext();
-console.log(players)
 const [counters, setCounters] = useState(players)
 
 const handleTotalCount = (counterToUpdate, lastCounter) =>{
