@@ -22,18 +22,18 @@ function AddPlayers() {
   }
 
   return (
-    <>
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder='player name' onChange={(e)=>setPlayer(e.target.value)} />
-      <input type="text" placeholder=" persona name" onChange={(e)=>setPersona(e.target.vaue)} />
-      <button className='bg-amber-500 text-white p-1 m-1 rounded' >Add player</button>
-    </form>
-    <ul className='bg-slate-800'>
-      {playerList.length ? playerList.map((player)=>{
-        return <li key={v4()}>{player.name}</li>
-      }): "loading"}
-    </ul>
-    </>
+    <div className='bg-gray-600 p-2 m-10 rounded'>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder='player name' onChange={(e)=>setPlayer(e.target.value)} />
+        <input type="text" placeholder=" persona name" onChange={(e)=>setPersona(e.target.vaue)} />
+        <button className='bg-amber-500 text-white p-1 m-1 rounded' >Add player</button>
+      </form>
+      <ul className='bg-slate-800 p-2'>
+        {playerList.length ? playerList.map((player)=>{
+          return <li key={v4()} className="text-white">{player.name}</li>
+        }): "loading"}
+      </ul>
+    </div>
   )
 }
 

@@ -36,7 +36,7 @@ const TournamentNav = (props) =>{
             <p>{details.toname}</p>
           </div>
         </div>
-        <div className="w-1/3 text-center">{timerVisible ? <Timer time={details.length} /> : <button>Show timer</button>}</div>
+        <div className="w-1/3">{timerVisible ? <Timer time={details.length} /> : <button>Show timer</button>}</div>
         <div className="w-1/3" />
       </div>
       

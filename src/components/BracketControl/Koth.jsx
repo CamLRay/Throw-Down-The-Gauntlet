@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Ring from '../Ring'
 import ScoreBoard from '../ScoreBoard'
 import { useOutletContext } from 'react-router-dom'
