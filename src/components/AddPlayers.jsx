@@ -2,40 +2,63 @@ import {React, useState} from 'react'
 import { v4 } from 'uuid';
 import { db } from '../firebase-config';
 import { useParams, useOutletContext } from 'react-router-dom';
-import { doc } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { PencilIcon, TrashIcon  } from '@heroicons/react/solid';
+
 
 function AddPlayers() {
   const params = useParams();
   const [tournamentDetails] = useOutletContext();
   const [player, setPlayer] = useState('');
   const [persona, setPersona] = useState('');
+  const [modal, setModal] = useState(false)
   const [playerList, setPlayerList] = useState(tournamentDetails.players);
 
-  const tournament = doc(db, "tournaments", params.tournyId);
+  const handleClear = async() => {
+    setPlayerList([]);
+    setModal(!modal)
+    const tournamentDoc = doc(db, "tournaments", params.tournyId);
+    const newField = {players: []}
+    await updateDoc(tournamentDoc, newField);
+  }
 
+  const handleDelete = async(playerId) => {
 
+  }
 
-  const handleSubmit = (e) => {
+  const handleEdit = async (playerId) => {
+
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setPlayerList([...playerList, {name:player, persona: persona, totalCount: 0, history: []}])
-    console.log("click")
+    setPlayerList([...playerList, {name:player, persona: persona, totalCount: 0, history: [], id:v4()}])
+    const tournamentDoc = doc(db, "tournaments", params.tournyId);
+    const newField = {players: [...playerList, {name:player, persona: persona, totalCount: 0, history: []}]}
+    await updateDoc(tournamentDoc, newField);
   }
 
   return (
+    <>
+    {modal ? <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 border-red-700 border-4 text-white h-fit w-1/2 p-1 flex-col align-middle text-center"><p>Are you sure you want to clear the player list?</p><div><button className='bg-green-600 px-2 rounded m-1' onClick={()=>handleClear()}>Confirm</button><button className='bg-red-600 px-2 rounded' onClick={()=>setModal(!modal)}>Cancel</button></div></div> : null}
     <div className='bg-gray-600 p-2 m-10 rounded'>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder='player name' onChange={(e)=>setPlayer(e.target.value)} className="p-1 mx-1" />
-        <input type="text" placeholder=" persona name" onChange={(e)=>setPersona(e.target.value)} className="p-1 mx-1" />
-        <button className='bg-amber-500 text-white p-1 m-1 rounded' >Add player</button>
+      <form onSubmit={handleSubmit} className="flex justify-between">
+        <div></div>
+        <div>
+          <input type="text" placeholder='Player name' onChange={(e)=>setPlayer(e.target.value)} className="bg-gray-800 appearance-none border-2 border-gray-700 rounded p-1 mx-2 text-white leading-tight focus:outline-none focus:bg-gray-700 focus:border-yellow-700" required/>
+          <input type="text" placeholder="Persona name" onChange={(e)=>setPersona(e.target.value)} className="bg-gray-800 appearance-none border-2 border-gray-700 rounded p-1 mx-2 text-white leading-tight focus:outline-none focus:bg-gray-700 focus:border-yellow-700" required/>
+          <button className='bg-amber-500 text-white p-1 m-1 rounded hover:bg-amber-700'>Add player</button>
+        </div>
+        <button type="button" className='bg-red-700 text-white p-1 m-1 rounded hover:bg-red-500' onClick={()=>setModal(!modal)}>Clear list</button>
       </form>
       <ul>
-        <li><span className='bg-slate-700 px-2'>#</span> Name - Persona</li>
+        <li className="text-amber-600 p-1 my-1"><span className='bg-slate-700 px-2 '>#</span> Name - Persona</li>
         {playerList.length ? playerList.map((player, index)=>{
-            return <li key={v4()} className="text-white bg-gray-600 p-1 my-1 border border-amber-600 rounded flex justify-between"><div><span className='bg-slate-700 px-2'>{index + 1}</span> {player.name} - {player.persona}</div><div className='flex'><PencilIcon className='hover:text-amber-500 w-5' /> <TrashIcon className='hover:text-amber-500 w-5' /></div></li>
+            return <li key={player.id} className="text-white bg-gray-700 p-1 my-1 border-2 border-amber-600 rounded flex justify-between"><div><span className='bg-slate-700 text-amber-600 px-2'>{index + 1}</span> {player.name} - {player.persona}</div><div className='flex'><PencilIcon className='hover:text-amber-500 w-5' onClick={()=>handleEdit(player.id)} /> <TrashIcon className='hover:text-amber-500 w-5' onClick={()=>handleDelete(player.id)} /></div></li>
           }): "loading"}
       </ul>
     </div>
+    </>
   )
 }
 
