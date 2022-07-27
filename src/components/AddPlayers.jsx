@@ -96,7 +96,7 @@ function AddPlayers() {
             return <li key={player.id} className="text-white bg-gray-700 p-1 my-1 border-2 border-amber-600 rounded flex justify-between"><div><span className='bg-slate-700 text-amber-600 px-2'>{index + 1}</span> {player.name} - {player.persona}</div><div className='flex'>
               <PencilIcon className='hover:text-amber-500 w-5 text-white/50' onClick={()=>handleEditModal(player)} />
               <TrashIcon className='hover:text-amber-500 w-5 text-white/50' onClick={()=>handleDelete(player.id)} /></div></li>
-          }): "loading"}
+          }): <div>List Empty </div>}
       </ul>
     </div>
     </>
