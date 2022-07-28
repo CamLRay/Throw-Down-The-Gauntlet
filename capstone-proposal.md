@@ -33,7 +33,7 @@
 * JSX
 * HTML
 * CSS
-* tailwindcss & HeroiIcons
+* tailwindcss & HeroIcons
 * NPM
 * React Router Dom
 * Firebase Authentication

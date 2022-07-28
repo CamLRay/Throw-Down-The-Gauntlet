@@ -65,8 +65,8 @@ function AddPlayers() {
   const bulkList = bulkInput.split('\n').map((player)=>{
     return {name:player.replace("\t", " ").split(" ")[0], persona: player.replace("\t", " ").split(" ")[1], totalCount: 0, history:[], id:v4()}
     })
-    console.log([...playerList].concat(bulkList))
     const newField = {players:[...playerList].concat(bulkList)}
+    setBulkInput('');
     await updateDoc(tournamentDoc, newField)
   }
 
@@ -109,7 +109,7 @@ function AddPlayers() {
         <div className='w-2/3'>
           <label className="block mb-2 text-xl font-semibold text-amber-500 dark:text-gray-400">Add Players</label>
           <p><span className="text-white">One player per line</span> (Name Persona)</p>
-          <textarea className="block p-2.5 w-2/3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e)=>setBulkInput(e.target.value)}></textarea>
+          <textarea className="block p-2.5 w-2/3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={bulkInput} onChange={(e)=>setBulkInput(e.target.value)}></textarea>
           <button className="bg-amber-500 text-white p-1 m-1 rounded hover:bg-amber-800" type="button" onClick={()=>handleBulkSubmit()}>Submit Players</button>
           <button className="bg-amber-700 text-white p-1 m-1 rounded hover:bg-amber-800" type="button" onClick={()=>setBulkAddVisible(false)}>Single Add</button>
         </div>

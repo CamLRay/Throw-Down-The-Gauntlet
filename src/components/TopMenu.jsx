@@ -48,7 +48,7 @@ function TopMenu() {
         }}
       >
         
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
         <Link to="/dashboard"><MenuItem onClick={handleClose}>Dashboard</MenuItem></Link>
         <MenuItem onClick={logoff}>{user ?  "Sign Out" : "Sign In"}</MenuItem>
         

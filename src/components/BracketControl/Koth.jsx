@@ -67,13 +67,18 @@ if(counters.length < 1){
   return "No participants added"
 } else {
 
+  const gridStyle = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))'
+  }
   return (
     <>
       <ScoreBoard counters={counters}/>
       <h1>Ring Count</h1>
       <button onClick={()=>incrementRing()} className="bg-green-500 px-4">+</button>
       <button onClick={()=>decrementRing()} className="bg-red-500 px-4">-</button>
-      <div className='grid grid-cols-fit-1'>
+      {/* <div className='grid grid-cols-[minmax(250px, 1fr)]]'> */}
+      <div style={gridStyle}>
       {rings.map((ring, index)=>{
         return <div key={index} className="m-2"><Ring number={index} counters={counters} onCounterClick={handleTotalCount}/></div>
       })}

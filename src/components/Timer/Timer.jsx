@@ -107,7 +107,7 @@ function Timer(props) {
     <div className="font-['digital-7']">
     
       {editing ? <div className='flex justify-center'>
-        <div className={` text-8xl inline-grid grid-cols-5 ${color}`}>
+        <div className={`text-8xl inline-grid grid-cols-5 ${color}`}>
         <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("INCREMENT_TENMINUTES")}><ChevronUpIcon /></div>
         <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("INCREMENT_MINUTES")}><ChevronUpIcon /></div>
         <div></div>
@@ -123,7 +123,10 @@ function Timer(props) {
         <div></div>
         <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("DECREMENT_TENSECONDS")}><ChevronDownIcon /></div>
         <div className="text-7xl hover:text-amber-800" onClick={()=>handleTime("DECREMENT_SECONDS")}><ChevronDownIcon /></div>
-        </div></div> : <div onClick={()=>handleEditing(true)} className={`flex justify-center text-8xl ${color}`}>{(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}</div>
+        </div></div> 
+        : <div onClick={()=>handleEditing(true)} className={`flex justify-center text-8xl ${color}`}>
+          {(Math.floor(seconds/60)/100).toFixed(2).slice(2)}:{((seconds%60)/100).toFixed(2).slice(2)}
+          </div>
       } 
     
     <div className="mt-0">
