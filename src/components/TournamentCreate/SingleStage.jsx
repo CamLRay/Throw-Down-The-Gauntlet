@@ -1,20 +1,26 @@
 import React from 'react'
+import { PropTypes } from 'prop-types';
 
 function SingleStage(props) {
-const {setStyle} = props
+  const {handleSetStyle} = props
+
 
   return (
-    <div className="flex justify-between p-2">
-      <h1 className='w-1/4'>Format</h1>
-      <select className='w-2/4 bg-gray-600' onChange={(e)=>setStyle({groups: e.target.value, elim: null})} required>
+    <div className="flex justify-start p-2">
+      <h1 className='mr-5'>Format</h1>
+      <select className='bg-gray-600' onChange={(e)=>handleSetStyle({groups: e.target.value, elim: null})} required>
+        <option></option>
         <option value="King of the Hill">King of the Hill</option>
-        <option value="Single Elim" disabled>Single Elimination <span className='italic'>- Coming Soon...</span></option>
-        <option value="Double Elim" disabled>Double Elimination <span className='italic'>- Coming Soon...</span></option>
-        <option value="Round Robin" disabled>Round Robin <span className='italic'>- Coming Soon...</span></option>
-        <option value="Swiss" disabled>Swiss <span className='italic'>- Coming Soon...</span></option>
+        <option value="Single Elim" disabled>Single Elimination - Coming soon...</option>
+        <option value="Double Elim" disabled>Double Elimination - Coming soon...</option>
+        <option value="Round Robin" disabled>Round Robin - Coming soon...</option>
+        <option value="Swiss" disabled>Swiss - Coming soon...</option>
       </select>
     </div>
   )
 }
 
+SingleStage.propTypes = {
+  handleSetStyle: PropTypes.func
+}
 export default SingleStage

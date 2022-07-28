@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check'
+// import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check'
 import { getFirestore} from '@firebase/firestore'
 import { getAuth } from 'firebase/auth';
 
@@ -14,6 +14,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig)
-const appCheck = initializeAppCheck(app, { provider: new ReCaptchaV3Provider('6LcquSghAAAAAK1FXZaSduuDVMliUHTeO6nr0CqP'), isTokenAutoRefreshEnabled: true})
+// const appCheck = initializeAppCheck(app, { provider: new ReCaptchaV3Provider('6LcquSghAAAAAK1FXZaSduuDVMliUHTeO6nr0CqP'), isTokenAutoRefreshEnabled: true})
 export const auth = getAuth(app);
 export const db = getFirestore(app);

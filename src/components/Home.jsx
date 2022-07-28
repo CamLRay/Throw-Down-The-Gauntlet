@@ -11,7 +11,6 @@ const Home = () =>{
   return <Dashboard />;
   } else {
     return(
-      
       <div className="h-screen bg-gradient-to-t from-neutral-900 to-amber-900/30 flex text-center">
         <div className='mx-auto mt-20'>
           <h1 className='text-2xl font-bold text-white'>Fighting Tournaments Made Easy</h1>

@@ -15,7 +15,6 @@ const TournamentCreate = (props) =>{
   const [categories, setCategories] = useState([]);
   const [length, setLength] = useState(0);
   const [description, setDescription] = useState('')
-  const [stagesVisible, setStagesVisible] = useState(false)
 
   const {user} = useAuth();
   const navigate = useNavigate();
@@ -46,6 +45,21 @@ const TournamentCreate = (props) =>{
 
   const handleCategoryAdd = () => {
     setCategories([...categories, categoryToAdd])
+
+  }
+
+  const handleSetStyle = (styleObject) => {
+    setStyle(styleObject);
+  }
+
+  const renderStages = () => {
+    if(isTwoStage != null){
+      if(isTwoStage){
+        return <TwoStage handleSetStyle={handleSetStyle} />
+      } else {
+        return <SingleStage handleSetStyle={handleSetStyle} />
+      }
+    }
   }
 
   return(
@@ -85,7 +99,7 @@ const TournamentCreate = (props) =>{
           
                 <div className="flex justify-center">
                   <div className="p-1">
-                    <input type='radio' id="single" name="torny_type" value={false} onChange={()=>{setIsTwoStage(false)}} checked='checked'/>
+                    <input type='radio' id="single" name="torny_type" value={false} onChange={()=>{setIsTwoStage(false)}}/>
                     <label htmlFor='single' >Single Stage</label>
                   </div>
                   <div className="p-1">
@@ -96,7 +110,8 @@ const TournamentCreate = (props) =>{
           
             </div>
             <div>
-              {isTwoStage ? <TwoStage setStyle={[setStyle]} /> : <SingleStage setTyle={[setStyle]} />}
+              {/* {isTwoStage ? <TwoStage setStyle={[setStyle]} /> : <SingleStage setTyle={[setStyle]} />} */}
+              {renderStages()}
             </div>
           </div>
           <button className="bg-amber-600 p-1 font-semibold rounded">Create Tournament</button>
