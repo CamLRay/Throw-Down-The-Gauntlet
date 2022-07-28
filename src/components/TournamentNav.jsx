@@ -42,9 +42,9 @@ const TournamentNav = (props) =>{
       
       
       <nav className="text-white flex align-baseline justify-center">
-      <Link to='' className={path === `/${param.tournyId}` ? "p-1 bg-slate-700 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-700 hover:decoration-amber-500/50 hover:decoration-4 hover:underline hover:underline-offset-4"}>Bracket</Link>
-        <Link to='standings' className={ path ==='/standings' ? "p-1 bg-slate-700 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-700 hover:decoration-amber-500/50 hover:decoration-4 hover:underline hover:underline-offset-4"} >Standings</Link>
-        <Link to='players' className={  path === '/players' ? "p-1 bg-slate-700 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-700 hover:decoration-amber-500/50 hover:decoration-4 hover:underline hover:underline-offset-4"} >Players</Link>
+      <Link to='' draggable="false" className={path === `/${param.tournyId}` ? "p-1 bg-slate-700 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-700 hover:decoration-amber-500/50 hover:decoration-4 hover:underline hover:underline-offset-4"}>Bracket</Link>
+        <Link to='standings' draggable="false" className={ path ==='/standings' ? "p-1 bg-slate-700 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-700 hover:decoration-amber-500/50 hover:decoration-4 hover:underline hover:underline-offset-4"} >Standings</Link>
+        <Link to='players' draggable="false" className={  path === '/players' ? "p-1 bg-slate-700 underline underline-offset-4 decoration-amber-500 decoration-4" : "p-1 bg-slate-700 hover:decoration-amber-500/50 hover:decoration-4 hover:underline hover:underline-offset-4"} >Players</Link>
       </nav>
     </div>
     </>

@@ -9,12 +9,13 @@ import { useNavigate } from "react-router-dom";
 
 const TournamentCreate = (props) =>{
   const [name, setName] = useState('');
-  const [isTwoStage, setIsTwoStage] = useState(false);
+  const [isTwoStage, setIsTwoStage] = useState(null);
   const [style, setStyle] = useState({groups: null, elim: null});
   const [categoryToAdd, setCategoryToAdd] = useState('');
   const [categories, setCategories] = useState([]);
   const [length, setLength] = useState(0);
   const [description, setDescription] = useState('')
+  const [stagesVisible, setStagesVisible] = useState(false)
 
   const {user} = useAuth();
   const navigate = useNavigate();
@@ -25,11 +26,13 @@ const TournamentCreate = (props) =>{
       await addDoc(collection(db, 'tournaments'), {
         name: name,
         toid: user.uid,
+        toname: user.displayName,
         description: description,
         style: style,
         length: parseInt(length),
         categories: categories,
-        players:[]
+        players:[],
+        status:'pending'
       })
         .then((docRef)=>{
           navigate('/tournament/' + docRef.id)
@@ -82,8 +85,8 @@ const TournamentCreate = (props) =>{
           
                 <div className="flex justify-center">
                   <div className="p-1">
-                    <input type='radio' id="single" name="torny_type" value={false} onChange={()=>{setIsTwoStage(false)}} />
-                    <label htmlFor='single' checked='checked'>Single Stage</label>
+                    <input type='radio' id="single" name="torny_type" value={false} onChange={()=>{setIsTwoStage(false)}} checked='checked'/>
+                    <label htmlFor='single' >Single Stage</label>
                   </div>
                   <div className="p-1">
                     <input type='radio' id="two" name="torny_type" value={true} onChange={()=>{setIsTwoStage(true)}} />
