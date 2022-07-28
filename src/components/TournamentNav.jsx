@@ -33,7 +33,7 @@ const TournamentNav = (props) =>{
           <p>{details.style.groups}{details.style.elim ? ` - ${details.style.elim}` : null}</p>
           <div>
             <p>Tournament Organizer</p>
-            <p>{details.toname}</p>
+            <p className="text-3xl font-bold text-amber-600">{details.toname}</p>
           </div>
         </div>
         <div className="w-2/3 sm:w-1/3">{timerVisible ? <Timer time={details.length} /> : <button>Show timer</button>}</div>
