@@ -10,6 +10,7 @@ function Koth() {
 const [counters, setCounters] = useState([])
 const [rings, setRings] = useState([])
 const [ringCount, setRingCount] = useState(1)
+const [isPersona, setIsPersona] = useState(true);
 const params = useParams();
 const tournamentDoc = doc(db, 'tournaments', params.tournyId)
 
@@ -73,14 +74,18 @@ if(counters.length < 1){
   }
   return (
     <>
+      <div className="flex justify-center my-3">
+        <button className='bg-neutral-500 p-1 rounded mt-2' onClick={()=>setIsPersona(!isPersona)}>{!isPersona ? "Display Persona" : "Display name"}</button>
+        <div className='ml-5'>
+          <h1>Ring Count</h1>
+          <button onClick={()=>incrementRing()} className="bg-green-500 px-6">+</button>
+          <button onClick={()=>decrementRing()} className="bg-red-500 px-7">-</button>
+        </div>
+      </div>
       <ScoreBoard counters={counters}/>
-      <h1>Ring Count</h1>
-      <button onClick={()=>incrementRing()} className="bg-green-500 px-4">+</button>
-      <button onClick={()=>decrementRing()} className="bg-red-500 px-4">-</button>
-      {/* <div className='grid grid-cols-[minmax(250px, 1fr)]]'> */}
       <div style={gridStyle}>
       {rings.map((ring, index)=>{
-        return <div key={index} className="m-2"><Ring number={index} counters={counters} onCounterClick={handleTotalCount}/></div>
+        return <div key={index} className="m-2"><Ring number={index} persona={isPersona} counters={counters} onCounterClick={handleTotalCount}/></div>
       })}
       </div>
       

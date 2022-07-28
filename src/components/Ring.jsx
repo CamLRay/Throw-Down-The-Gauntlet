@@ -5,6 +5,7 @@ function Ring(props) {
   const {number, counters, onCounterClick} = props;
   const [lastClicked, setlastClicked] = useState({});
   const [streak, setStreak] = useState(0);
+
   // const [state, dispatch] = useReducer({streak: 0, lastClicked: {}})
 
   const handleClick = (clickedCounter) =>{
@@ -33,7 +34,7 @@ function Ring(props) {
       <h1 className='text-xl font-bold'>Ring {number + 1}</h1>
       <div>{lastClicked.name}{streak > 0 ? - streak : "King"}</div>
         {counters.sort((a, b)=>(a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).map((counter)=>{
-          return <button key={v4()} onClick={()=>handleClick(counter)} className="bg-amber-600 p-1 m-1">{counter.name}</button>
+          return <button key={v4()} onClick={()=>handleClick(counter)} className="bg-amber-600 p-1 px-2 m-1 rounded">{props.persona ? counter.persona : counter.name}</button>
         })}
 
     </div>

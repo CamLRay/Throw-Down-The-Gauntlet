@@ -1,7 +1,7 @@
 import TwoStage from "./TwoStage";
 import SingleStage from "./SingleStage";
 import { v4 } from "uuid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { addDoc, collection} from 'firebase/firestore'
 import { db } from "../../firebase-config";

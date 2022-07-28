@@ -17,11 +17,6 @@ import BracketControl from './components/BracketControl/BracketControl';
 
 
 function App() {
-  const navStyle = {
-    marginTop: '0',
-    backgroundColor: 'black'
-
-  }
   return (
     <>
       <AuthContextProvider>

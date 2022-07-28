@@ -15,6 +15,10 @@ A foam fighting tournament orginazation and scorekeeping app
 * Node.js
   * NPM
 
+## Description
+
+Foam fighting has some niche tournament styles and none of the major tournament organization applicaitons out there supprt these styles. Throw Down the Guantlet aims to let foam fighters create and manage the tournaments they know and love.
+
 ## View the site at
 [Throw Down the Gauntlet](https://tournaments.blackspire.site/)
 
