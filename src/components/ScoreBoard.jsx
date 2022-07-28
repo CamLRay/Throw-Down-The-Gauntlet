@@ -12,15 +12,15 @@ const ScoreBoard = (props) =>{
     <>
     <div className="flex justify-center">
       <div className="bg-neutral-500 h-12 w-1/6 flex-col mt-4">
-      {sortCounters()[1].name + " " + sortCounters()[1].totalCount + ' wins' }
+      {props.persona ? sortCounters()[1].persona + " " + sortCounters()[1].totalCount + ' wins' : sortCounters()[1].name + " " + sortCounters()[1].totalCount + ' wins' }
       <div className="bg-neutral-700 h-12 w-full">2nd</div>
       </div>
       <div className="bg-neutral-500 h-18 w-1/6">
-      {sortCounters()[0].name + " " + sortCounters()[0].totalCount + ' wins'}
+      {props.persona ?  sortCounters()[0].persona + " " + sortCounters()[0].totalCount + ' wins': sortCounters()[0].name + " " + sortCounters()[0].totalCount + ' wins'}
       <div className="bg-neutral-700 h-16 w-full">1st</div>
       </div>
       <div className="bg-neutral-500 h-10 w-1/6 mt-6">
-      {sortCounters()[2].name + " " + sortCounters()[2].totalCount + ' wins'}
+      {props.persona ? sortCounters()[2].persona + " " + sortCounters()[2].totalCount + ' wins' : sortCounters()[2].name + " " + sortCounters()[2].totalCount + ' wins'}
       <div className="bg-neutral-700 h-10 w-full">3rd</div>
       </div>
     </div>

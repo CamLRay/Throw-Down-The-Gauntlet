@@ -82,7 +82,7 @@ if(counters.length < 1){
           <button onClick={()=>decrementRing()} className="bg-red-500 px-7">-</button>
         </div>
       </div>
-      <ScoreBoard counters={counters}/>
+      <ScoreBoard persona={isPersona} counters={counters}/>
       <div style={gridStyle}>
       {rings.map((ring, index)=>{
         return <div key={index} className="m-2"><Ring number={index} persona={isPersona} counters={counters} onCounterClick={handleTotalCount}/></div>
