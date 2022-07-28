@@ -36,8 +36,8 @@ const TournamentNav = (props) =>{
             <p>{details.toname}</p>
           </div>
         </div>
-        <div className="w-1/3">{timerVisible ? <Timer time={details.length} /> : <button>Show timer</button>}</div>
-        <div className="w-1/3" />
+        <div className="w-2/3 sm:w-1/3">{timerVisible ? <Timer time={details.length} /> : <button>Show timer</button>}</div>
+        <div className="w-1/3 hidden sm:block" />
       </div>
       
       

@@ -1,14 +1,13 @@
 import { React, useState } from 'react'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/android-chrome-192x192.png'
 import { Link } from 'react-router-dom';
 
 function TopMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [signedIn, setSignedIn] = useState(true);
+  // const [signedIn, setSignedIn] = useState(true);
   const open = Boolean(anchorEl);
   const { logout, user } = useAuth();
   
@@ -31,8 +30,8 @@ function TopMenu() {
     <>
       <div className='bg-slate-800 min-h-fit w-screen flex justify-between p-3 pr-5'>
         <Link to="/"><img className='w-8' src={logo} alt='logo' /></Link>
-        <h1 className='text-2xl font-bold text-amber-500'>Throw Down The Gauntlet</h1>
-        
+        <h1 className='text-2xl font-bold text-amber-500 sm:block hidden'>Throw Down The Gauntlet</h1>
+        <h1 className='sm:hidden text-2xl font-bold text-amber-500 '>TDTG</h1>
         {user ? 
         <button onClick={handleClick} className='bg-amber-500 text-amber-50 w-fit rounded p-1 shadow-lg hover:bg-amber-600'>{user.displayName}</button> 
         : 
