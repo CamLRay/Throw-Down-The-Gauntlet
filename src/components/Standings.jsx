@@ -24,7 +24,7 @@ function Standings() {
                 <td className='p-1'>{player.name}</td> 
                 <td className='p-1'>{player.persona}</td>
                 <td className='p-1'>{player.totalCount}</td>
-                <td className='p-1'>{player.history.map((streak)=>{return streak + " "})}</td>
+                <td className='p-1'>{player.history.sort().reverse().map((streak, index)=>{return index < 3 ? streak + " " : null})}</td>
               </tr>
             ) 
           })}

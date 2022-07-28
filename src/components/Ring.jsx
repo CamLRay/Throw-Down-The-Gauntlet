@@ -2,7 +2,7 @@ import {React, useState, useReducer} from 'react'
 import { v4 } from 'uuid';
 
 function Ring(props) {
-  const {counters, onCounterClick} = props;
+  const {number, counters, onCounterClick} = props;
   const [lastClicked, setlastClicked] = useState({});
   const [streak, setStreak] = useState(0);
   // const [state, dispatch] = useReducer({streak: 0, lastClicked: {}})
@@ -29,10 +29,14 @@ function Ring(props) {
 
   return (
     <>
-    <div>{lastClicked.name}-{streak}</div>
-      {counters.sort((a, b)=>(a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).map((counter)=>{
-        return <button key={v4()} onClick={()=>handleClick(counter)}>{counter.name}</button>
-      })}
+    <div className='bg-neutral-600 p-3'>
+      <h1 className='text-xl font-bold'>Ring {number + 1}</h1>
+      <div>{lastClicked.name}{streak > 0 ? - streak : "King"}</div>
+        {counters.sort((a, b)=>(a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).map((counter)=>{
+          return <button key={v4()} onClick={()=>handleClick(counter)} className="bg-amber-600 p-1 m-1">{counter.name}</button>
+        })}
+
+    </div>
     </>
   )
 }

@@ -70,12 +70,14 @@ if(counters.length < 1){
   return (
     <>
       <ScoreBoard counters={counters}/>
-      <button onClick={()=>incrementRing()}>Add Ring</button>
-      <button onClick={()=>decrementRing()}>Remove Ring</button>
+      <h1>Ring Count</h1>
+      <button onClick={()=>incrementRing()} className="bg-green-500 px-4">+</button>
+      <button onClick={()=>decrementRing()} className="bg-red-500 px-4">-</button>
+      <div className='grid grid-cols-fit-1'>
       {rings.map((ring, index)=>{
-        return <div key={index} ><Ring counters={counters} onCounterClick={handleTotalCount}/></div>
+        return <div key={index} className="m-2"><Ring number={index} counters={counters} onCounterClick={handleTotalCount}/></div>
       })}
-      
+      </div>
       
     </>
   )
