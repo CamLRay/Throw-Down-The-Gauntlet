@@ -101,9 +101,9 @@ function AddPlayers() {
           <input type="text" placeholder='Player name' onChange={(e)=>setPlayer(e.target.value)} value={player} className="bg-gray-800 appearance-none border-2 border-gray-700 rounded p-1 mx-2 text-white leading-tight focus:outline-none focus:bg-gray-700 focus:border-yellow-700" required/>
           <input type="text" placeholder="Persona name" onChange={(e)=>setPersona(e.target.value)} value={persona} className="bg-gray-800 appearance-none border-2 border-gray-700 rounded p-1 mx-2 text-white leading-tight focus:outline-none focus:bg-gray-700 focus:border-yellow-700" required/>
           <button className='bg-amber-500 text-white p-1 m-1 rounded hover:bg-amber-700'>Add player</button> 
-          
+          <button className="bg-amber-700 text-white p-1 m-1 rounded hover:bg-amber-800" type="button" onClick={()=>setBulkAddVisible(true)}>Bulk Add</button>
         </div>
-        <button className="bg-amber-700 text-white p-1 m-1 rounded hover:bg-amber-800" type="button" onClick={()=>setBulkAddVisible(true)}>Bulk Add</button>
+        
         </>
         : 
         <div className='w-2/3'>

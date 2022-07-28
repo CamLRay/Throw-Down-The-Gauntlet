@@ -26,19 +26,18 @@ const ScoreBoard = (props) =>{
         </div>
       </div>
     </div>
-   <div className="sm:hidden">
-     
-     {sortCounters().map((player,i)=>{
-     
-       return( i < 3 ?
-         <div key={v4()} className="">
-           <p>#{i + 1} {player.name} {player.totalCount} wins</p>
-         </div>
-         : null
-       )
-     
-     })}
-   </div>
+    <div className="sm:hidden">
+      {sortCounters().map((player,i)=>{
+      
+        return( i < 3 ?
+          <div key={v4()} className="">
+            <p>#{i + 1} {player.name} {player.totalCount} wins</p>
+          </div>
+          : null
+        )
+      
+      })}
+    </div>
     </>
     
     )
