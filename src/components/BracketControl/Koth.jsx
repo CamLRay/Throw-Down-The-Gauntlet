@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Ring from '../Ring'
 import ScoreBoard from '../ScoreBoard'
-import { useOutletContext, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { doc, onSnapshot, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase-config';
+import { v4 } from 'uuid';
 
 function Koth() {
-const [tournamentDetails] = useOutletContext();
 const [counters, setCounters] = useState([])
+const [rings, setRings] = useState([])
+const [ringCount, setRingCount] = useState(1)
 const params = useParams();
 const tournamentDoc = doc(db, 'tournaments', params.tournyId)
+
 
 
 useEffect(()=>{
@@ -19,6 +22,15 @@ useEffect(()=>{
   return ()=> unsub();
 
   },[]);
+
+  useEffect(()=>{
+    let tempRings = []
+    for(let i=0; i < ringCount; i++){
+      tempRings.push(i);
+    }
+    setRings(tempRings)
+
+  },[ringCount])
 
 
 const updatePlayer = async (player) => {
@@ -40,6 +52,17 @@ const handleTotalCount = (counterToUpdate, lastCounter) =>{
   
 }
 
+const incrementRing = () => {
+  setRingCount(prev=> prev +1)
+  
+}
+
+const decrementRing = () => {
+  if(ringCount > 1){
+    setRingCount(prev=> prev - 1)
+  }
+}
+
 if(counters.length < 1){
   return "No participants added"
 } else {
@@ -47,10 +70,12 @@ if(counters.length < 1){
   return (
     <>
       <ScoreBoard counters={counters}/>
-      <button>Add Ring</button>
-      <button>Remove Ring</button>
-    
-      <Ring counters={counters} onCounterClick={handleTotalCount}/>
+      <button onClick={()=>incrementRing()}>Add Ring</button>
+      <button onClick={()=>decrementRing()}>Remove Ring</button>
+      {rings.map((ring, index)=>{
+        return <div key={index} ><Ring counters={counters} onCounterClick={handleTotalCount}/></div>
+      })}
+      
       
     </>
   )
