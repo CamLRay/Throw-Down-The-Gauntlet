@@ -13,7 +13,7 @@ function BracketControl() {
   return (
     <>
     <div className='text-center text-white'>
-      {tournamentDetails.categories.map((category)=> {
+      {/* {tournamentDetails.categories.map((category)=> {
         return(
           <button key={v4()} className="p-1" onClick={()=>setRound(category)}>{category}</button>
         )
@@ -27,7 +27,8 @@ function BracketControl() {
         </div>
         )
       })}
-      {round ? null : "No Category Selected"}
+      {round ? null : "No Category Selected"} */}
+      <Koth />
       </div>
 
     </>

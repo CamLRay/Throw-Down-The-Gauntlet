@@ -51,7 +51,6 @@ function AddPlayers() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const tournamentDoc = doc(db, "tournaments", params.tournyId);
     const newField = {players: [...playerList, {name:player, persona: persona, totalCount: 0, history: [], id: v4()}]}
     setPersona('')
     setPlayer('')
